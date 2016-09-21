@@ -131,8 +131,8 @@ height = 4800,
 width = 1400;
 
 var color = d3.scale.quantize()
-        .domain([0, 6])
-        .range(d3.range(9).map(function(d) { return "q" + d + "-11"; }));  
+    .domain([0, 6])
+    .range(d3.range(9).map(function(d) { return "q" + d + "-11"; }));
 
 var grid = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -141,25 +141,25 @@ var grid = d3.select("#chart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var cells = grid.append("g").attr("class", "grid_cells").selectAll("rect")
-            .data(data)
-        .enter().append("svg:rect")
-        .attr("class", function(d){ return color(d.value); })
-        .attr("x", function(d) { return (d.location)*cell.width ; })
-        .attr("y", function(d) { return ( colSortOrder[years[0]].indexOf(d.Country))*cell.height; })
-        .attr("width", cell.width - cell.border)
-        .attr("height", cell.height- cell.border)
-        .on('mouseover', function(d) {
-            d3.select(this).style('fill', 'white');
-            highlightLabels(d);
-        })
-        .on('mouseout', function(d) {
-            d3.select(this).style('fill', '');
-            unhighlightLabels(d);
-        })
-        .on('click', function() {
-            console.log(d3.select(this));
-        })
-        .style("stroke", '#555');
+    .data(data)
+    .enter().append("svg:rect")
+    .attr("class", function(d){ return color(d.value); })
+    .attr("x", function(d) { return (d.location)*cell.width ; })
+    .attr("y", function(d) { return ( colSortOrder[years[0]].indexOf(d.Country))*cell.height; })
+    .attr("width", cell.width - cell.border)
+    .attr("height", cell.height- cell.border)
+    .on('mouseover', function(d) {
+        d3.select(this).style('fill', 'white');
+        highlightLabels(d);
+    })
+    .on('mouseout', function(d) {
+        d3.select(this).style('fill', '');
+        unhighlightLabels(d);
+    })
+    .on('click', function() {
+        console.log(d3.select(this));
+    })
+    .style("stroke", '#555');
 
 function highlightLabels(event) {
     var rowNumber = 0;
@@ -185,6 +185,7 @@ function highlightLabels(event) {
 
     currCellLabelIndex = (rowNumber * years.length) + event.location;
     cell_labels = d3.selectAll(".cell_label")[0];
+
     d3.select(cell_labels[currCellLabelIndex])
         .style("font-size", "16px")
         .style("font-weight", "bold");
@@ -203,14 +204,14 @@ function unhighlightLabels(event) {
 }
 
 var celltext = grid.append("g").attr("class", "cell_labels").selectAll(".cell_label")
-        .data(data)
-        .enter().append("svg:text")
-        .attr("x", function(d) { return (d.location)*cell.width + (cell.width-cell.border)/2  ;})
-        .attr("y", function(d) { return (/*countryOrder*/colSortOrder[years[0]].indexOf(d.Country))*cell.height + (cell.height-cell.border)/2; })
-        .attr("text-anchor","middle")
-        .attr("dy",".35em")
-        .attr("class", "cell_label")
-        .text(function(d) { if (d.value == 0) { return ""; } else { return d.value; }} );
+    .data(data)
+    .enter().append("svg:text")
+    .attr("x", function(d) { return (d.location)*cell.width + (cell.width-cell.border)/2  ;})
+    .attr("y", function(d) { return (/*countryOrder*/colSortOrder[years[0]].indexOf(d.Country))*cell.height + (cell.height-cell.border)/2; })
+    .attr("text-anchor","middle")
+    .attr("dy",".35em")
+    .attr("class", "cell_label")
+    .text(function(d) { if (d.value == 0) { return ""; } else { return d.value; }} );
 
 var rowtext = grid.append("g").attr("class", "row_labels").selectAll(".row_label")
     .data(colSortOrder[years[0]])

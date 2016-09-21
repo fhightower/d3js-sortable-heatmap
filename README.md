@@ -8,4 +8,4 @@ You can see a working demo of this heatmap [here](https://fhightower.github.io/d
 
 **Disclaimer:** I am just starting to learn javascript and this is my first project using javascript, so any feedback is greatly appreciated.  I will be going back through this project and doing some cleanup in the near future.  Thanks!
 
-This is inspired by the heatmap [here](https://jsfiddle.net/nrabinowitz/Lk5Pw/ "d3js Heatmap Example").  Here is a screenshot of the heatmap:
+This is inspired by the heatmap [here](https://jsfiddle.net/nrabinowitz/Lk5Pw/ "d3js Heatmap Example").
