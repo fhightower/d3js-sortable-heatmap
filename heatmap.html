@@ -163,16 +163,22 @@ var cells = grid.append("g").attr("class", "grid_cells").selectAll("rect")
         .style("stroke", '#555');
 
 function highlightLabels(event) {
-    rows = d3.selectAll(".row_label")[0];
+    // for (var i in cell_labels) {
+    //     // console.log("i", i);
+    // }
+    var rowNumber = 0;
+    var rows = d3.selectAll(".row_label")[0];
 
     for (var i = rows.length - 1; i >= 0; i--) {
         if (rows[i].__data__ == event.Country) {
             d3.select(rows[i])
                 .style("font-weight", "bold");
+
+            rowNumber = i;
         }
     }
 
-    cols = d3.selectAll(".col_label")[0];
+    var cols = d3.selectAll(".col_label")[0];
 
     for (var i = cols.length - 1; i >= 0; i--) {
         if (cols[i].__data__ == event.year) {
@@ -180,6 +186,12 @@ function highlightLabels(event) {
                 .style("font-weight", "bold");
         }
     }
+
+    currCellLabelIndex = (rowNumber * years.length) + event.location;
+    cell_labels = d3.selectAll(".cell_label")[0];
+    d3.select(cell_labels[currCellLabelIndex])
+        .style("font-size", "16px")
+        .style("font-weight", "bold");
 }
 
 function unhighlightLabels(event) {
@@ -187,6 +199,10 @@ function unhighlightLabels(event) {
         .style("font-weight", "");
 
     d3.selectAll(".col_label")
+        .style("font-weight", "");
+
+     d3.selectAll(".cell_label")
+        .style("font-size", "")
         .style("font-weight", "");
 }
 
