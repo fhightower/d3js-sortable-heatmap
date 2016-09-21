@@ -137,8 +137,7 @@ var color = d3.scale.quantize()
 var grid = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    // .style("margin-left", margin.left + "px")
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var cells = grid.append("g").attr("class", "grid_cells").selectAll("rect")
@@ -163,9 +162,6 @@ var cells = grid.append("g").attr("class", "grid_cells").selectAll("rect")
         .style("stroke", '#555');
 
 function highlightLabels(event) {
-    // for (var i in cell_labels) {
-    //     // console.log("i", i);
-    // }
     var rowNumber = 0;
     var rows = d3.selectAll(".row_label")[0];
 
@@ -254,8 +250,6 @@ function updateRow(country) {
         .duration(2500)
         .attr("x", function(d) { return rowSortOrder[country].indexOf(d.year)*cell.width + (cell.width-cell.border)/2; });
 
-    console.log("incoming data", rowSortOrder[country]);
-
     d3.selectAll(".col_label")
         .data(rowSortOrder[country])
         .text(function (d){ return d; })
@@ -292,7 +286,7 @@ function unhighlightColumn(year) {
 }
 
 function updateCol(year) {
-    console.log("year", year);
+    console.log("Updating column", year);
 
     grid.selectAll('rect')
         .transition()
