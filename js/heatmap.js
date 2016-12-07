@@ -1,3 +1,4 @@
+"use strict";
 var dataset = [ { "2003": "1", "2004": "1", "2005": "1", "2006": "1", "2007": "1", "2008": "1", "2009": "1", "Country Name": "USA" },
 { "2003": "2", "2004": "2", "2005": "2", "2006": "2", "2007": "3", "2008": "4", "2009": "6", "Country Name": "Canada" },
 { "2003": "3", "2004": "3", "2005": "3", "2006": "3", "2007": "2", "2008": "3", "2009": "3", "Country Name": "Italy" },
@@ -25,7 +26,7 @@ var colSortOrder={};
 for (var i=0; i<=output.length; i++) {
     var row = output[i];
 
-    for (yr in row) {
+    for (var yr in row) {
         colSortOrder[yr] = colSortOrder[yr] || {};
         colSortOrder[yr] = row[yr];
     }
@@ -37,7 +38,7 @@ var rowSortOrder={};
 for (var i=0; i<dataset.length; i++) {
     var countryData = dataset[i];
 
-    yearsSorted = Object.keys(countryData).sort(function(a,b){
+    var yearsSorted = Object.keys(countryData).sort(function(a,b){
         return countryData[a]-countryData[b];
     })
 
@@ -48,7 +49,7 @@ for (var i=0; i<dataset.length; i++) {
 
 console.log("rowSortOrder: ", rowSortOrder);
 
-data = [];
+var data = [];
 dataset.sort(function (a,b) {
     return (a[years[0]]-b[years[0]]);
 })
@@ -119,8 +120,8 @@ function highlightLabels(event) {
         }
     }
 
-    currCellLabelIndex = (rowNumber * years.length) + event.location;
-    cell_labels = d3.selectAll(".cell_label")[0];
+    var currCellLabelIndex = (rowNumber * years.length) + event.location;
+    var cell_labels = d3.selectAll(".cell_label")[0];
 
     d3.select(cell_labels[currCellLabelIndex])
         .style("font-size", "16px")
