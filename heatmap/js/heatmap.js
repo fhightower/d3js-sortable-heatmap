@@ -99,6 +99,16 @@ var cells = grid.append("g").attr("class", "grid_cells").selectAll("rect")
     })
     .style("stroke", '#555');
 
+var celltext = grid.append("g").attr("class", "cell_labels").selectAll(".cell_label")
+    .data(data)
+    .enter().append("svg:text")
+    .attr("x", function(d) { return (d.location)*cell.width + (cell.width-cell.border)/2  ;})
+    .attr("y", function(d) { return (/*countryOrder*/colSortOrder[years[0]].indexOf(d.Country))*cell.height + (cell.height-cell.border)/2; })
+    .attr("text-anchor","middle")
+    .attr("dy",".35em")
+    .attr("class", "cell_label")
+    .text(function(d) { if (d.value == 0) { return ""; } else { return d.value; }} );
+
 function highlightLabels(event) {
     var rowNumber = 0;
     var rows = d3.selectAll(".row_label")[0];
@@ -140,16 +150,6 @@ function unhighlightLabels(event) {
         .style("font-size", "")
         .style("font-weight", "");
 }
-
-var celltext = grid.append("g").attr("class", "cell_labels").selectAll(".cell_label")
-    .data(data)
-    .enter().append("svg:text")
-    .attr("x", function(d) { return (d.location)*cell.width + (cell.width-cell.border)/2  ;})
-    .attr("y", function(d) { return (/*countryOrder*/colSortOrder[years[0]].indexOf(d.Country))*cell.height + (cell.height-cell.border)/2; })
-    .attr("text-anchor","middle")
-    .attr("dy",".35em")
-    .attr("class", "cell_label")
-    .text(function(d) { if (d.value == 0) { return ""; } else { return d.value; }} );
 
 var rowtext = grid.append("g").attr("class", "row_labels").selectAll(".row_label")
     .data(colSortOrder[years[0]])
