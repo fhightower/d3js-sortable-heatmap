@@ -2,7 +2,7 @@
 
 The name just about says it all for this project.  Heatmap.html is a heatmap that uses d3js and can be sorted by column or row.
 
-You can see a working demo of this heatmap [here](https://fhightower.github.io/d3js-sortable-heatmap/heatmap.html).
+You can see a working demo of this heatmap [here](https://fhightower.github.io/d3js-sortable-heatmap/heatmap/heatmap.html).
 
 ![](d3js-sortable-heatmap.png)
 
