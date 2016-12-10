@@ -107,18 +107,20 @@ var celltext = grid.append("g").attr("class", "cell_labels").selectAll(".cell_la
     .attr("text-anchor","middle")
     .attr("dy",".35em")
     .attr("class", "cell_label")
+    .attr("value", function(d) { if (d.value == 0) { return ""; } else { return d.value; }})
+    .attr("country", function(d) { if (d.Country == 0) { return ""; } else { return d.Country; }})
+    .attr("year", function(d) { if (d.year == 0) { return ""; } else { return d.year; }})
     .text(function(d) { if (d.value == 0) { return ""; } else { return d.value; }} );
 
 function highlightLabels(event) {
-    var rowNumber = 0;
+    var labelCountry = event.Country;
+    var labelYear = event.year;
     var rows = d3.selectAll(".row_label")[0];
 
     for (var i = rows.length - 1; i >= 0; i--) {
         if (rows[i].__data__ == event.Country) {
             d3.select(rows[i])
                 .style("font-weight", "bold");
-
-            rowNumber = i;
         }
     }
 
@@ -131,12 +133,19 @@ function highlightLabels(event) {
         }
     }
 
-    var currCellLabelIndex = (rowNumber * years.length) + event.location;
-    var cell_labels = d3.selectAll(".cell_label")[0];
-
-    d3.select(cell_labels[currCellLabelIndex])
-        .style("font-size", "16px")
-        .style("font-weight", "bold");
+    grid.selectAll(".cell_label")
+        .style("font-size", function(d) {
+            if (d.year == labelYear && d.Country == labelCountry) {
+                return "15px";
+            } else {
+                return "12px";
+            }
+        })
+        .style("font-weight", function(d) {
+            if (d.year == labelYear && d.Country == labelCountry) {
+                return "bold";
+            }
+        });
 }
 
 function unhighlightLabels(event) {
