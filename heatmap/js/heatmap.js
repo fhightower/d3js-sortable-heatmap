@@ -103,7 +103,7 @@ var celltext = grid.append("g").attr("class", "cell_labels").selectAll(".cell_la
     .data(data)
     .enter().append("svg:text")
     .attr("x", function(d) { return (d.location)*cell.width + (cell.width-cell.border)/2  ;})
-    .attr("y", function(d) { return (/*countryOrder*/colSortOrder[years[0]].indexOf(d.Country))*cell.height + (cell.height-cell.border)/2; })
+    .attr("y", function(d) { return (colSortOrder[years[0]].indexOf(d.Country))*cell.height + (cell.height-cell.border)/2; })
     .attr("text-anchor","middle")
     .attr("dy",".35em")
     .attr("class", "cell_label")
