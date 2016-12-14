@@ -1,15 +1,40 @@
-.q0-11 {fill: rgba(230, 230, 230, 0.6);}
-.q1-11 {fill: rgba(244, 109, 67, 0.8);}
-.q2-11 {fill: rgba(253, 174, 97, 0.8);}
-.q3-11 {fill: rgba(254, 224, 144, 0.8);}
-.q4-11 {fill: rgba(255, 255, 191, 0.8);}
-.q5-11 {fill: rgba(224, 243, 248, 0.8);}
-.q6-11 {fill: rgba(171, 217, 233, 0.8);}
-.q7-11 {fill: rgba(116, 173, 209, 0.8);}
-.q8-11 {fill: rgba(69, 117, 180, 0.8);}
- 
-.cell_label, .row_label{
+.q0-11 {
+    fill: rgba(230, 230, 230, 0.6);
+}
 
+.q1-11 {
+    fill: rgba(244, 109, 67, 0.8);
+}
+
+.q2-11 {
+    fill: rgba(253, 174, 97, 0.8);
+}
+
+.q3-11 {
+    fill: rgba(254, 224, 144, 0.8);
+}
+
+.q4-11 {
+    fill: rgba(255, 255, 191, 0.8);
+}
+
+.q5-11 {
+    fill: rgba(224, 243, 248, 0.8);
+}
+
+.q6-11 {
+    fill: rgba(171, 217, 233, 0.8);
+}
+
+.q7-11 {
+    fill: rgba(116, 173, 209, 0.8);
+}
+
+.q8-11 {
+    fill: rgba(69, 117, 180, 0.8);
+}
+
+.cell_label, .row_label{
   font-family: sans-serif;
   font-size: 12px;
   line-height: 20px;
@@ -20,22 +45,20 @@
 }
 
 .col_label {
-
     font-family: sans-serif;
     font-size: 14px;
     line-height: 12px;
 }
 
 .col_label:hover {
-
     fill: blue;
     font-size: 16px;
     line-height: 12px;
     font-weight: bold;
     cursor: default;
 }
-.col_label:active {
 
+.col_label:active {
     fill: orange;
     font-size: 16px;
     line-height: 12px;
